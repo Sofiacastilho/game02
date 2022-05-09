@@ -6,8 +6,6 @@ import java.awt.image.BufferedImage;
 public abstract class GameObject {
     protected double x;
     protected double y;
-    protected double width;
-    protected double height;
     protected BufferedImage sprite;
     private String spriteName;
 
@@ -41,7 +39,7 @@ public abstract class GameObject {
     }
 
     public Rectangle hitbox(){
-        return (new Rectangle(x, y, 100, 100));
+        return(new Rectangle ((int)x, (int)y, 100, 100));
     }
 
 }

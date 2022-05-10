@@ -4,6 +4,8 @@ import br.pucpr.jge.InputManager;
 
 
 public class AlienShot extends GameObject {
+    protected GameObject object;
+
     public AlienShot(double x, double y) {
         super("/image/shot.png", x, y);
     }
@@ -11,6 +13,7 @@ public class AlienShot extends GameObject {
     @Override
     public void update(double s, InputManager keys) {
         y += 800 * s;
+        checkCollision(object);
     }
 
     @Override
@@ -18,14 +21,12 @@ public class AlienShot extends GameObject {
         return y > 50;
     }
 
-    private boolean checkCollision(GameObject object) {
+    public void checkCollision(GameObject object) {
         if (object instanceof Ship) {
             setInGame(true);
         }else{
             setInGame(false);
         }
-
-        return (hitbox().intersects(object.hitbox()));
     }
 
 }

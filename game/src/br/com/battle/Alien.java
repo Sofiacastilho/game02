@@ -35,20 +35,19 @@ public class Alien extends GameObject {
                 count = 0;
             }
         }
+
     }
 
     public boolean isInGame(){
         return true;
     }
 
-    private boolean checkCollision(GameObject object) {
+    public void checkCollision(GameObject object) {
         if (object instanceof Ship){
             setInGame(false);
         }else{
             setInGame(true);
         }
-
-        return (hitbox().intersects(object.hitbox()));
     }
 
 }

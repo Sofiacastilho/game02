@@ -43,8 +43,8 @@ public abstract class GameObject {
         return(new Rectangle ((int)x, (int)y, sprite.getWidth(), sprite.getHeight()));
     }
 
-    private boolean checkCollision(GameObject object) {
-        return (hitbox().intersects(object.hitbox()));
+    public void checkCollision(GameObject object) {
+
     }
 
     public void setInGame(boolean inGame) {

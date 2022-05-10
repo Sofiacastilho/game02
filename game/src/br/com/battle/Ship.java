@@ -30,14 +30,13 @@ public class Ship extends GameObject {
 
     }
 
-    private boolean checkCollision(GameObject object) {
+    public void checkCollision(GameObject object) {
         if (object instanceof Ship){
             setInGame(true);
         }else{
             setInGame(false);
         }
 
-        return (hitbox().intersects(object.hitbox()));
     }
 
 }

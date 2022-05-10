@@ -39,10 +39,14 @@ public class GameManager {
         objects.addAll(newObjects);
         newObjects.clear();
 
-        for (Object obj: objects) {
-            for (Object obj2: objects) {
-                if (obj != obj2){
-                    //colidiu
+        for(int i = 0; i < this.objects.size() - 1; ++i) {
+            Rectangle obj1 = ((GameObject)this.objects.get(i)).hitbox().getBounds();
+
+            for(int j = i + 1; j < this.objects.size(); ++j) {
+                Rectangle obj2 = ((GameObject)this.objects.get(j)).hitbox().getBounds();
+                if (obj1.intersects(obj2)) {
+                    ((GameObject)this.objects.get(i)).checkCollision((GameObject)this.objects.get(j));
+                    ((GameObject)this.objects.get(j)).checkCollision((GameObject)this.objects.get(i));
                 }
             }
         }

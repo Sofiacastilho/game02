@@ -4,8 +4,6 @@ import br.pucpr.jge.GameManager;
 import br.pucpr.jge.GameObject;
 import br.pucpr.jge.InputManager;
 
-import java.awt.*;
-
 import static java.awt.event.KeyEvent.*;
 
 public class Ship extends GameObject {

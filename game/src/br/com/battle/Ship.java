@@ -25,6 +25,7 @@ public class Ship extends GameObject {
         if (keys.isDown(VK_SPACE) && shotInterval > 0.3) {
             var shot = new Shot(getX() + 25, getY());
             GameManager.getInstance().add(shot);
+            isFriendly();
             shotInterval = 0;
         }
 
@@ -32,11 +33,16 @@ public class Ship extends GameObject {
 
     public void checkCollision(GameObject object) {
         if (object instanceof Ship){
+
             setInGame(true);
         }else{
             setInGame(false);
         }
 
+    }
+
+    public boolean isInGame() {
+        return inGame;
     }
 
 }

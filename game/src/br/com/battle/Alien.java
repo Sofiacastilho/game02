@@ -38,16 +38,20 @@ public class Alien extends GameObject {
 
     }
 
-    public boolean isInGame(){
-        return true;
-    }
-
     public void checkCollision(GameObject object) {
-        if (object instanceof Ship){
+        if (object instanceof Shot){
             setInGame(false);
         }else{
             setInGame(true);
         }
+    }
+
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
+    }
+
+    public boolean isInGame() {
+        return inGame;
     }
 
 }

@@ -6,9 +6,11 @@ import java.awt.image.BufferedImage;
 public abstract class GameObject {
     protected double x;
     protected double y;
+    protected boolean inGame = true;
+    protected boolean friendly = true;
     protected BufferedImage sprite;
     private String spriteName;
-    private boolean inGame = true;
+
 
     public GameObject(String spriteName, double x, double y) {
         this.spriteName = spriteName;
@@ -35,10 +37,6 @@ public abstract class GameObject {
         g2d.drawImage(sprite, (int)x, (int)y, null);
     }
 
-    public boolean isInGame() {
-        return inGame;
-    }
-
     public Rectangle hitbox(){
         return(new Rectangle ((int)x, (int)y, sprite.getWidth(), sprite.getHeight()));
     }
@@ -49,5 +47,17 @@ public abstract class GameObject {
 
     public void setInGame(boolean inGame) {
         this.inGame = inGame;
+    }
+
+    public boolean isInGame() {
+        return inGame;
+    }
+
+    public boolean isFriendly() {
+        return friendly;
+    }
+
+    public void setFriendly(boolean friendly) {
+        this.friendly = friendly;
     }
 }

@@ -19,7 +19,17 @@ public class Shot extends GameObject {
         return y > -50;
     }
 
+    public void checkCollision(GameObject object) {
+        if (object instanceof Alien){
+            setInGame(false);
+        }else{
+            setInGame(true);
+        }
+    }
 
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
+    }
 
 
 

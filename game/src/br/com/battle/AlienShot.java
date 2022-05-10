@@ -1,13 +1,11 @@
 package br.com.battle;
-
-import br.pucpr.jge.GameManager;
 import br.pucpr.jge.GameObject;
 import br.pucpr.jge.InputManager;
 
 import java.awt.*;
 
-public class Shot extends GameObject {
-    public Shot(double x, double y) {
+public class AlienShot extends GameObject {
+    public AlienShot(double x, double y) {
         super("/image/shot.png", x, y);
     }
 
@@ -18,12 +16,12 @@ public class Shot extends GameObject {
 
     @Override
     public void update(double s, InputManager keys) {
-        y -= 800 * s;
+        y += 800 * s;
     }
 
     @Override
     public boolean isInGame() {
-        return y > -50;
+        return y > +50;
     }
 
     private boolean checkCollision() {
@@ -34,3 +32,4 @@ public class Shot extends GameObject {
         return false;
     }
 }
+

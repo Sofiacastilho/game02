@@ -1,6 +1,5 @@
 package br.pucpr.jge;
 
-import javax.net.ssl.KeyManager;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +38,14 @@ public class GameManager {
         }
         objects.addAll(newObjects);
         newObjects.clear();
+
+        for (Object obj: objects) {
+            for (Object obj2: objects) {
+                //if(obj.intersects){
+                    // is in game false
+               // }
+            }
+        }
     }
 
     void draw(Graphics2D g2d) {

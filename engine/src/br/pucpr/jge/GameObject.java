@@ -42,4 +42,8 @@ public abstract class GameObject {
         return(new Rectangle ((int)x, (int)y, 100, 100));
     }
 
+    private boolean checkCollision() {
+        return false;
+    }
+
 }

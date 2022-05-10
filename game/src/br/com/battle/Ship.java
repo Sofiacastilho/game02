@@ -15,10 +15,6 @@ public class Ship extends GameObject {
         super("/image/intruder.png", 0, 500);
     }
 
-    public Rectangle hitbox() {
-        return(new Rectangle ((int)x, (int)y, 100, 100));
-    }
-
     public void update(double s, InputManager keys) {
         shotInterval += s;
 
@@ -36,11 +32,14 @@ public class Ship extends GameObject {
 
     }
 
-    private boolean checkCollision() {
-        if (this.hitbox().intersects(hitbox())){
-            System.out.println("tiro colidindo na propria nave");
-            return true;
+    private boolean checkCollision(GameObject object) {
+        if (object instanceof Ship){
+            setInGame(true);
+        }else{
+            setInGame(false);
         }
-        return false;
+
+        return (hitbox().intersects(object.hitbox()));
     }
+
 }

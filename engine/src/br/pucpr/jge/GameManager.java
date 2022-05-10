@@ -41,9 +41,9 @@ public class GameManager {
 
         for (Object obj: objects) {
             for (Object obj2: objects) {
-                //if(obj.intersects){
-                    // is in game false
-               // }
+                if (obj != obj2){
+
+                }
             }
         }
     }

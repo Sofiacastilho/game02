@@ -8,6 +8,7 @@ public abstract class GameObject {
     protected double y;
     protected BufferedImage sprite;
     private String spriteName;
+    private boolean inGame = true;
 
     public GameObject(String spriteName, double x, double y) {
         this.spriteName = spriteName;
@@ -35,15 +36,18 @@ public abstract class GameObject {
     }
 
     public boolean isInGame() {
-        return true;
+        return inGame;
     }
 
     public Rectangle hitbox(){
-        return(new Rectangle ((int)x, (int)y, 100, 100));
+        return(new Rectangle ((int)x, (int)y, sprite.getWidth(), sprite.getHeight()));
     }
 
-    private boolean checkCollision() {
-        return false;
+    private boolean checkCollision(GameObject object) {
+        return (hitbox().intersects(object.hitbox()));
     }
 
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
+    }
 }

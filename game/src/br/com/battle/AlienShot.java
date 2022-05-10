@@ -2,16 +2,10 @@ package br.com.battle;
 import br.pucpr.jge.GameObject;
 import br.pucpr.jge.InputManager;
 
-import java.awt.*;
 
 public class AlienShot extends GameObject {
     public AlienShot(double x, double y) {
         super("/image/shot.png", x, y);
-    }
-
-    @Override
-    public Rectangle hitbox() {
-        return(new Rectangle ((int)x, (int)y, 100, 100));
     }
 
     @Override
@@ -21,15 +15,18 @@ public class AlienShot extends GameObject {
 
     @Override
     public boolean isInGame() {
-        return y > +50;
+        return y > 50;
     }
 
-    private boolean checkCollision() {
-        if (this.hitbox().intersects(hitbox())){
-            System.out.println("colidiu tiro");
-            return true;
+    private boolean checkCollision(GameObject object) {
+        if (object instanceof Ship) {
+            setInGame(true);
+        }else{
+            setInGame(false);
         }
-        return false;
+
+        return (hitbox().intersects(object.hitbox()));
     }
+
 }
 

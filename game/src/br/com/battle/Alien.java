@@ -4,7 +4,6 @@ import br.pucpr.jge.GameManager;
 import br.pucpr.jge.GameObject;
 import br.pucpr.jge.InputManager;
 
-import java.awt.*;
 import java.util.Random;
 
 public class Alien extends GameObject {
@@ -18,10 +17,6 @@ public class Alien extends GameObject {
     public Alien(double x, double y) {
         super("/image/destroyer.png", x, y);
         this.initialX = x;
-    }
-
-    public Rectangle hitbox() {
-        return(new Rectangle ((int)x, (int)y, 100, 100));
     }
 
     public void update(double s, InputManager keys) {
@@ -39,7 +34,6 @@ public class Alien extends GameObject {
                 }
                 count = 0;
             }
-
         }
     }
 
@@ -47,12 +41,14 @@ public class Alien extends GameObject {
         return true;
     }
 
-    private boolean checkCollision() {
-        if (this.hitbox().intersects(hitbox())){
-            System.out.println("colidiu alien");
-
-            return true;
+    private boolean checkCollision(GameObject object) {
+        if (object instanceof Ship){
+            setInGame(false);
+        }else{
+            setInGame(true);
         }
-        return false;
+
+        return (hitbox().intersects(object.hitbox()));
     }
+
 }

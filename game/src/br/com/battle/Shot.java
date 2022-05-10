@@ -11,8 +11,6 @@ public class Shot extends GameObject {
     @Override
     public void update(double s, InputManager keys) {
         y -= 800 * s;
-
-
     }
 
     @Override

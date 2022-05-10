@@ -42,7 +42,7 @@ public class GameManager {
         for (Object obj: objects) {
             for (Object obj2: objects) {
                 if (obj != obj2){
-
+                    //colidiu
                 }
             }
         }
@@ -53,4 +53,5 @@ public class GameManager {
             obj.draw(g2d);
         }
     }
+
 }

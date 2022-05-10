@@ -21,6 +21,7 @@ public class StarBattle implements Steps {
                 GameManager.getInstance().add(alien);
             }
         }
+
     }
 
     @Override

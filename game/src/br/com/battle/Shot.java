@@ -1,37 +1,29 @@
 package br.com.battle;
 
+import br.pucpr.jge.AbstractGameObject;
 import br.pucpr.jge.GameObject;
 import br.pucpr.jge.InputManager;
 
-public class Shot extends GameObject {
+public class Shot extends AbstractGameObject {
+    private boolean isAlive = true;
+
     public Shot(double x, double y) {
         super("/image/shot.png", x, y);
     }
 
-    @Override
     public void update(double s, InputManager keys) {
         y -= 800 * s;
-
     }
 
     @Override
     public boolean isInGame() {
-        return y > -50;
+        return y > -50 && isAlive;
     }
 
-    public void checkCollision(GameObject object) {
-        if (object instanceof Alien){
-            setInGame(false);
-        }else{
-            setInGame(true);
+    @Override
+    public void onCollision(GameObject other) {
+        if (other instanceof Alien) {
+            isAlive = false;
         }
     }
-
-    public void setInGame(boolean inGame) {
-        this.inGame = inGame;
-    }
-
-
-
-
 }

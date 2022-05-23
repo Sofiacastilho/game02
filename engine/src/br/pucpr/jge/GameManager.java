@@ -36,20 +36,19 @@ public class GameManager {
                 it.remove();
             }
         }
-        objects.addAll(newObjects);
-        newObjects.clear();
 
-        for(int i = 0; i < this.objects.size() - 1; ++i) {
-            Rectangle obj1 = ((GameObject)this.objects.get(i)).hitbox().getBounds();
-
-            for(int j = i + 1; j < this.objects.size(); ++j) {
-                Rectangle obj2 = ((GameObject)this.objects.get(j)).hitbox().getBounds();
-                if (obj1.intersects(obj2)) {
-                    ((GameObject)this.objects.get(i)).checkCollision((GameObject)this.objects.get(j));
-                    ((GameObject)this.objects.get(j)).checkCollision((GameObject)this.objects.get(i));
+        for (var i = 0; i < objects.size()-1; i++) {
+            for (var j = i+1; j < objects.size(); j++) {
+                var obj1 = objects.get(i);
+                var obj2 = objects.get(j);
+                if (obj1.getHitBox().intersects(obj2.getHitBox())) {
+                    obj1.onCollision(obj2);
+                    obj2.onCollision(obj1);
                 }
             }
         }
+        objects.addAll(newObjects);
+        newObjects.clear();
     }
 
     void draw(Graphics2D g2d) {
@@ -57,5 +56,4 @@ public class GameManager {
             obj.draw(g2d);
         }
     }
-
 }

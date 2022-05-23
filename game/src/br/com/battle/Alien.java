@@ -1,18 +1,19 @@
 package br.com.battle;
 
+import br.pucpr.jge.AbstractGameObject;
 import br.pucpr.jge.GameManager;
 import br.pucpr.jge.GameObject;
 import br.pucpr.jge.InputManager;
 
 import java.util.Random;
 
-public class Alien extends GameObject {
+public class Alien extends AbstractGameObject {
     private double initialX;
     private double t;
+    private boolean isAlive = true;
     private double shotInterval = 0;
     Random rnd = new Random();
     private int count;
-
 
     public Alien(double x, double y) {
         super("/image/destroyer.png", x, y);
@@ -22,6 +23,7 @@ public class Alien extends GameObject {
     public void update(double s, InputManager keys) {
         x = initialX + Math.sin(t) * 50;
         t += s;
+
         shotInterval += s;
         count ++;
         if (count >= 120){
@@ -38,20 +40,15 @@ public class Alien extends GameObject {
 
     }
 
-    public void checkCollision(GameObject object) {
-        if (object instanceof Shot){
-            setInGame(false);
-        }else{
-            setInGame(true);
+    @Override
+    public boolean isInGame() {
+        return isAlive;
+    }
+
+    @Override
+    public void onCollision(GameObject other) {
+        if (other instanceof Shot) {
+            isAlive = false;
         }
     }
-
-    public void setInGame(boolean inGame) {
-        this.inGame = inGame;
-    }
-
-    public boolean isInGame() {
-        return inGame;
-    }
-
 }

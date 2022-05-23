@@ -1,10 +1,12 @@
 package br.com.battle;
+import br.pucpr.jge.AbstractGameObject;
 import br.pucpr.jge.GameObject;
 import br.pucpr.jge.InputManager;
 
 
-public class AlienShot extends GameObject {
+public class AlienShot extends AbstractGameObject {
     protected GameObject object;
+    private boolean isAlive = true;
 
     public AlienShot(double x, double y) {
         super("/image/shot.png", x, y);
@@ -13,7 +15,7 @@ public class AlienShot extends GameObject {
     @Override
     public void update(double s, InputManager keys) {
         y += 800 * s;
-        checkCollision(object);
+        onCollision(object);
     }
 
     @Override
@@ -21,11 +23,9 @@ public class AlienShot extends GameObject {
         return y > 50;
     }
 
-    public void checkCollision(GameObject object) {
-        if (object instanceof Ship) {
-            setInGame(true);
-        }else{
-            setInGame(false);
+    public void onCollision(GameObject other) {
+        if (other instanceof Ship) {
+            isAlive = false;
         }
     }
 

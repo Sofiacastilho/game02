@@ -1,18 +1,11 @@
 package br.pucpr.jge;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import static java.awt.event.KeyEvent.*;
 
 public class GameFrame extends JFrame {
     private Steps game;

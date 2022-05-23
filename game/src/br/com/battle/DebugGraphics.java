@@ -1,4 +1,7 @@
-package br.pucpr.jge;
+package br.com.battle;
+
+import br.pucpr.jge.GameObject;
+import br.pucpr.jge.InputManager;
 
 import java.awt.*;
 

@@ -1,5 +1,7 @@
 package br.com.battle;
 
+import java.util.Random;
+
 import br.pucpr.jge.AbstractGameObject;
 import br.pucpr.jge.GameManager;
 import br.pucpr.jge.GameObject;
@@ -7,7 +9,7 @@ import br.pucpr.jge.InputManager;
 
 import java.util.Random;
 
-public class Alien extends AbstractGameObject {
+public class Boss extends AbstractGameObject {
     private final double initialX;
     private double t;
     private boolean isAlive = true;
@@ -15,8 +17,8 @@ public class Alien extends AbstractGameObject {
     Random rnd = new Random();
     private int count;
 
-    public Alien(double x, double y) {
-        super("/image/destroyer.png", x, y);
+    public Boss(double x, double y) {
+        super("/image/green.png", x, y);
         this.initialX = x;
     }
 

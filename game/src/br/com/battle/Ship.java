@@ -13,7 +13,6 @@ public class Ship extends AbstractGameObject {
 
     public Ship() {
         super("/image/intruder.png", 0, 500);
-
     }
 
     public void update(double s, InputManager keys) {
@@ -32,8 +31,16 @@ public class Ship extends AbstractGameObject {
     }
 
     @Override
+    public boolean isInGame() {
+        return isAlive;
+    }
+
+    @Override
     public void onCollision(GameObject other) {
-        if (other instanceof Ship) {
+
+        if (other instanceof AlienShot) {
+            var explosion = new Explosion((int)getX(), (int)getY());
+            GameManager.getInstance().add(explosion);
             isAlive = false;
         }
     }

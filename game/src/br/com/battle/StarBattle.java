@@ -13,7 +13,7 @@ public class StarBattle implements Steps {
         var ship = new Ship();
         GameManager.getInstance().add(new Ship());
 
-        GameManager.getInstance().add(new DebugGraphics(ship, Color.cyan));
+        //GameManager.getInstance().add(new DebugGraphics(ship, Color.cyan));
 
         for (var y = 0; y < 4; y++) {
             for (var x = 0; x < 5; x++) {
@@ -21,19 +21,18 @@ public class StarBattle implements Steps {
                 var alien = new Alien(x * 150 + xOff, y * 75 + 25);
                 GameManager.getInstance().add(alien);
 
-                GameManager.getInstance().add(new DebugGraphics(alien, Color.RED));
+               // GameManager.getInstance().add(new DebugGraphics(alien, Color.RED));
             }
         }
+
+        GameManager.getInstance().add(new Boss(250, -800));
 
     }
 
     @Override
     public boolean update(double s, InputManager keys) {
-        if (keys.isDown(VK_ESCAPE)) {
-            return false;
-        }
-
-        return true;
+        if (!keys.isDown(VK_ESCAPE)) return true;
+        else return false;
     }
 
     @Override

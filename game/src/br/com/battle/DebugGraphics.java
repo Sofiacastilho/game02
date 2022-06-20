@@ -24,12 +24,12 @@ public class DebugGraphics implements GameObject {
 
     @Override
     public double getX() {
-        return getHitBox().getX();
+        return hb.getX();
     }
 
     @Override
     public double getY() {
-        return getHitBox().getY();
+        return hb.getY();
     }
 
     @Override
@@ -55,6 +55,6 @@ public class DebugGraphics implements GameObject {
 
     @Override
     public void onCollision(GameObject other) {
-
+        hb.onCollision(other);
     }
 }

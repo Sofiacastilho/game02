@@ -8,6 +8,7 @@ public class AlienShot extends AbstractGameObject {
     protected GameObject object;
     private boolean isAlive = true;
 
+
     public AlienShot(double x, double y) {
         super("/image/shot.png", x, y);
     }

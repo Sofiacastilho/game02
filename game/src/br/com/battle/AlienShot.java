@@ -15,13 +15,14 @@ public class AlienShot extends AbstractGameObject {
 
     @Override
     public void update(double s, InputManager keys) {
-        y += 800 * s;
+        y += 200 * s;
         onCollision(object);
     }
 
     @Override
     public boolean isInGame() {
-        return y > 50;
+        if (!isAlive) return false;
+        return y > 50 ;
     }
 
     public void onCollision(GameObject other) {

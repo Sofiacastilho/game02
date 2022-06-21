@@ -3,6 +3,7 @@ package br.com.battle;
 import br.pucpr.jge.*;
 
 import java.awt.*;
+import java.io.IOException;
 
 import static java.awt.event.KeyEvent.*;
 
@@ -13,6 +14,7 @@ public class StarBattle implements Steps {
         var ship = new Ship();
         GameManager.getInstance().add(new Ship());
 
+
         //GameManager.getInstance().add(new DebugGraphics(ship, Color.cyan));
 
         for (var y = 0; y < 4; y++) {
@@ -21,24 +23,31 @@ public class StarBattle implements Steps {
                 var alien = new Alien(x * 150 + xOff, y * 75 + 25);
                 GameManager.getInstance().add(alien);
 
+
                // GameManager.getInstance().add(new DebugGraphics(alien, Color.RED));
             }
         }
 
-        GameManager.getInstance().add(new Boss(250, -800));
+
 
     }
 
     @Override
     public boolean update(double s, InputManager keys) {
         if (!keys.isDown(VK_ESCAPE)) return true;
+
         else return false;
     }
 
     @Override
-    public void draw(Graphics2D g2d) {
-        g2d.setColor(Color.BLACK);
+    public void draw(Graphics2D g2d)  {
         g2d.fillRect(0, 0, 800, 600);
+        g2d.setColor(Color.BLACK);
+
+
+        g2d.setColor(Color.white);
+        g2d.drawString("SCORE" + GameManager.getInstance().score, 700, 550);
+
 
     }
 
@@ -51,7 +60,7 @@ public class StarBattle implements Steps {
         EventQueue.invokeLater(() ->
             new GameFrame("Star Battle",
                 800, 600,
-                new StarBattle()
+                new TelaInicial()
             ).setVisible(true)
         );
     }

@@ -10,6 +10,7 @@ import static java.awt.event.KeyEvent.*;
 public class Ship extends AbstractGameObject {
     private double shotInterval = 0.3;
     private boolean isAlive = true;
+    public int life = 3;
 
     public Ship() {
         super("/image/intruder.png", 0, 500);
@@ -39,9 +40,14 @@ public class Ship extends AbstractGameObject {
     public void onCollision(GameObject other) {
 
         if (other instanceof AlienShot) {
-            var explosion = new Explosion((int)getX(), (int)getY());
-            GameManager.getInstance().add(explosion);
-            isAlive = false;
+            life --;
+            System.out.println(life);
+            if (life <= 0) {
+                isAlive = false;
+                var explosion = new Explosion((int)getX(), (int)getY());
+                GameManager.getInstance().add(explosion);
+            }
         }
+
     }
 }

@@ -9,6 +9,9 @@ public class GameManager {
     private List<GameObject> objects = new ArrayList<>();
     private List<GameObject> newObjects = new ArrayList<>();
 
+
+    public int score = 0;
+
     private GameManager() {
     }
 
@@ -24,6 +27,7 @@ public class GameManager {
     public GameManager add(GameObject obj) {
         obj.load();
         newObjects.add(obj);
+
         return this;
     }
 

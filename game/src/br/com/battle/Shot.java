@@ -25,5 +25,8 @@ public class Shot extends AbstractGameObject {
         if (other instanceof Alien) {
             isAlive = false;
         }
+        if (other instanceof Boss) {
+            isAlive = false;
+        }
     }
 }

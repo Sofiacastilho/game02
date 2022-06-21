@@ -1,5 +1,6 @@
 package br.com.battle;
 
+import java.util.List;
 import java.util.Random;
 
 import br.pucpr.jge.AbstractGameObject;
@@ -16,6 +17,8 @@ public class Boss extends AbstractGameObject {
     private double shotInterval = 0;
     Random rnd = new Random();
     private int count;
+    public int lifeBoss = 15;
+
 
     public Boss(double x, double y) {
         super("/image/green.png", x, y);
@@ -29,11 +32,17 @@ public class Boss extends AbstractGameObject {
         shotInterval += s;
         count ++;
         if (count >= 200){
-            int num = rnd.nextInt(1500);
+            int num = rnd.nextInt(80);
             if (num == 1) {
                 if (shotInterval > 2) {
                     var alienShot = new AlienShot(getX() + 25, getY());
                     GameManager.getInstance().add(alienShot);
+
+                    var alienShot2 = new AlienShot(getX() , getY());
+                    GameManager.getInstance().add(alienShot2);
+
+                    var alienShot3 = new AlienShot(getX() - 25, getY());
+                    GameManager.getInstance().add(alienShot3);
                     shotInterval = 0;
                 }
                 count = 0;
@@ -50,9 +59,14 @@ public class Boss extends AbstractGameObject {
     @Override
     public void onCollision(GameObject other) {
         if (other instanceof Shot) {
-            var explosion = new Explosion((int)getX(), (int)getY());
-            GameManager.getInstance().add(explosion);
-            isAlive = false;
+            lifeBoss --;
+            GameManager.getInstance().score += 1000;
+
+            if (lifeBoss <= 0) {
+                var explosion = new Explosion((int)getX(), (int)getY());
+                GameManager.getInstance().add(explosion);
+                isAlive = false;
+            }
         }
     }
 }
